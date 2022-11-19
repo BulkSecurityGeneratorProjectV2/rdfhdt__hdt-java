@@ -112,7 +112,7 @@ public class PFCDictionarySectionBig implements DictionarySectionPrivate {
 		FileOutputStream out;
 		
 		try {
-			file = File.createTempFile("test", ".tmp");
+			file = Files.createTempFile("test", ".tmp").toFile();
 			out = new FileOutputStream(file);
 		} catch (IOException e) {
 			throw new RuntimeException("Error creating temporary file.", e);

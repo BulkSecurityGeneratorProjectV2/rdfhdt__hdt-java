@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -442,7 +443,7 @@ public class BitmapTriples implements TriplesPrivate {
 		// Copy each object reference to its position
 		SequenceLog64Big objectInsertedCount = new SequenceLog64Big(BitUtil.log2(maxCount), numDifferentObjects);
 		objectInsertedCount.resize(numDifferentObjects);
-		File file = File.createTempFile("objectsArray", ".tmp");
+		File file = Files.createTempFile("objectsArray", ".tmp").toFile();
 
 		SequenceLog64BigDisk objectArray = new SequenceLog64BigDisk(file.getAbsolutePath(),
 				BitUtil.log2(seqY.getNumberOfElements()), seqZ.getNumberOfElements());
